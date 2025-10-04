@@ -1,0 +1,82 @@
+module RadarSystem
+
+types
+
+  RadarObject :: 
+    id        : nat
+    range     : real
+    velocity  : real
+    direction : seq of char
+    iff       : [bool];
+
+  Missile :: 
+    id   : nat
+    type : seq of char;
+
+  Classification = <Friendly> | <Hostile> | <Unknown>;
+  Alert = <AlertIssued> | <NoAlert>;
+  Countermeasure = <Flares> | <Chaff>;
+
+state RadarState of
+  radarOperational       : bool
+  detectionOperational   : bool
+  failSafeMode           : bool
+  AllObjects             : set of RadarObject
+inv
+  (not radarOperational or not detectionOperational) => failSafeMode
+init
+  mk_RadarState(true, true, false, {
+    mk_RadarObject(1, 30, 450, "Toward", false),
+    mk_RadarObject(2, 70, 300, "Away", true),
+    mk_RadarObject(3, 45, 500, "Toward", nil)
+  })
+
+operations
+
+  RadarScan: () ==> set of RadarObject
+  RadarScan() ==
+    return { obj | obj in set AllObjects & obj.range <= 50 }
+  ext rd AllObjects;
+
+  IsPotentialMissile: RadarObject ==> bool
+  IsPotentialMissile(obj) ==
+    return obj.velocity >= 400 and obj.direction = "Toward";
+
+  ClassifyObject: RadarObject ==> Classification
+  ClassifyObject(obj) ==
+    if obj.iff = true then return <Friendly>
+    elseif obj.iff = false then return <Hostile>
+    else return <Unknown>;
+
+  RespondToThreat: RadarObject ==> Alert
+  RespondToThreat(obj) ==
+    return <AlertIssued>
+  pre IsPotentialMissile(obj)
+  post RESULT = <AlertIssued>;
+
+  DeployCountermeasure: Missile ==> Countermeasure
+  DeployCountermeasure(m) ==
+    if failSafeMode
+    then return <Chaff>
+    elseif m.type = "IR" then return <Flares>
+    else return <Chaff>
+  ext rd failSafeMode
+  post 
+    (failSafeMode => RESULT = <Chaff>) and
+    (not failSafeMode => (m.type = "IR" => RESULT = <Flares>) and (m.type <> "IR" => RESULT = <Chaff>));
+
+  CheckSystemStatus: () ==> ()
+  CheckSystemStatus() ==
+    if not radarOperational or not detectionOperational
+    then (
+      failSafeMode := true;
+      NotifyPilot()
+    )
+  ext wr failSafeMode, rd radarOperational, rd detectionOperational
+  post failSafeMode = true;
+
+  NotifyPilot: () ==> ()
+  NotifyPilot() ==
+    skip;
+
+end RadarSystem

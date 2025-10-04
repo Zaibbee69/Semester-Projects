@@ -1,0 +1,106 @@
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>specification1.vdmsl</title>
+<style>
+<!--
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+{margin:0in; margin-bottom:.0001pt; font-size:12.0pt; font-family:"Times New Roman";}
+h1
+{margin-top:12.0pt; margin-right:0in; margin-bottom:3.0pt; margin-left:0in; page-break-after:avoid; font-size:16.0pt; font-family:Arial;}
+@page Section1
+{size:8.5in 11.0in; margin:1.0in 1.25in 1.0in 1.25in;}
+div.Section1
+{page:Section1;}
+-->
+</style>
+</head>
+<body lang=EN-GB>
+<div class=Section1>
+<h1 align=center style='text-align:center'>specification1.vdmsl</h1>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>module&nbsp;RadarSystem</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>exports&nbsp;all;</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>--&nbsp;TYPES</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>types</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;Object&nbsp;::&nbsp;</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;nat</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;range&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;real</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;velocity&nbsp;:&nbsp;real</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;direction:&nbsp;seq&nbsp;of&nbsp;char</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;iff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;[bool];&nbsp;--&nbsp;Optional:&nbsp;true/false&nbsp;or&nbsp;unknown</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;Missile&nbsp;::</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;nat</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;seq&nbsp;of&nbsp;char;</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;Classification&nbsp;=&nbsp;&lt;Friendly&gt;&nbsp;|&nbsp;&lt;Hostile&gt;&nbsp;|&nbsp;&lt;Unknown&gt;;</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;Alert&nbsp;=&nbsp;&lt;AlertIssued&gt;&nbsp;|&nbsp;&lt;NoAlert&gt;;</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;Countermeasure&nbsp;=&nbsp;&lt;Flares&gt;&nbsp;|&nbsp;&lt;Chaff&gt;;</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>--&nbsp;GLOBAL&nbsp;VALUES</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>values</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;AllObjects&nbsp;:&nbsp;set&nbsp;of&nbsp;Object&nbsp;=&nbsp;{</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;mk_Object(1,&nbsp;30,&nbsp;450,&nbsp;"Toward",&nbsp;false),</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;mk_Object(2,&nbsp;70,&nbsp;300,&nbsp;"Away",&nbsp;true),</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;mk_Object(3,&nbsp;45,&nbsp;500,&nbsp;"Toward",&nbsp;nil)</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;};</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>--&nbsp;FUNCTIONS</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>functions</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;RadarScan:&nbsp;()&nbsp;-&gt;&nbsp;set&nbsp;of&nbsp;Object</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;RadarScan()&nbsp;==</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Returns&nbsp;set&nbsp;of&nbsp;detected&nbsp;objects&nbsp;within&nbsp;50km&nbsp;radius</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;obj&nbsp;|&nbsp;obj&nbsp;in&nbsp;set&nbsp;AllObjects&nbsp;&amp;&nbsp;obj.range&nbsp;&lt;=&nbsp;50&nbsp;};</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;IsPotentialMissile:&nbsp;Object&nbsp;-&gt;&nbsp;bool</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;IsPotentialMissile(obj)&nbsp;==</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;obj.velocity&nbsp;&gt;=&nbsp;400&nbsp;and&nbsp;obj.direction&nbsp;=&nbsp;"Toward";</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;ClassifyObject:&nbsp;Object&nbsp;-&gt;&nbsp;Classification</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;ClassifyObject(obj)&nbsp;==</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;obj.iff&nbsp;=&nbsp;true&nbsp;then&nbsp;&lt;Friendly&gt;</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;elseif&nbsp;obj.iff&nbsp;=&nbsp;false&nbsp;then&nbsp;&lt;Hostile&gt;</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;&lt;Unknown&gt;;</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>--&nbsp;OPERATIONS</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>operations</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;RespondToThreat:&nbsp;Object&nbsp;==&gt;&nbsp;Alert</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;RespondToThreat(obj)&nbsp;==</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&lt;AlertIssued&gt;</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;pre&nbsp;IsPotentialMissile(obj)</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;post&nbsp;RESULT&nbsp;=&nbsp;&lt;AlertIssued&gt;;</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;DeployCountermeasure:&nbsp;Missile&nbsp;==&gt;&nbsp;Countermeasure</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;DeployCountermeasure(m)&nbsp;==</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;m.type&nbsp;=&nbsp;"IR"&nbsp;then&nbsp;&lt;Flares&gt;</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;&lt;Chaff&gt;;</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>--&nbsp;SYSTEM&nbsp;STATE</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>state&nbsp;SystemState&nbsp;of</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;radarOperational:&nbsp;bool</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;detectionOperational:&nbsp;bool</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;failSafeMode:&nbsp;bool</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>inv&nbsp;mk_SystemState(ro,&nbsp;do,&nbsp;fs)&nbsp;==</span></p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>&nbsp;&nbsp;(not&nbsp;ro&nbsp;or&nbsp;not&nbsp;do)&nbsp;=&gt;&nbsp;fs;</span></p>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt; font-family:"Courier New"; color:black'>end&nbsp;RadarSystem</span></p>
+</div>
+</body>
+</html>

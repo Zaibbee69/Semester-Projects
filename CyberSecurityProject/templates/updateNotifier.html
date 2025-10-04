@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+Update Notifier
+
+{% endblock %}
+
+{% block main %}
+
+<h1>Welcome to Update Notifier: -</h1>
+
+<p><b>Please Click on the following button to login to your computer</b>.</p>
+
+
+<hr>
+
+<br><br>
+
+{% if loginer %}
+<div class="alert alert-dismissible alert-warning">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <h4 class="alert-heading">Warning!</h4>
+    <p class="mb-0">You Haven't Updated Your Windows OS in quite a while.  .<a href="https://www.microsoft.com/software-download/windows11" class="alert-link">  Please Click to Update.</a>.</p>
+</div>
+
+{% else %}
+<p>..</p>
+{% endif %}
+
+
+<form action="/updateNotifier" method="post">
+
+<button type="submit" name="login_button" id="login_button" class="btn btn-info">Login</button>
+
+</form>
+
+
+<br><br>
+<br><br>
+
+{% endblock %}

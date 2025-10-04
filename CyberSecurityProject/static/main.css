@@ -1,0 +1,131 @@
+/*--------------------------------------------Layout.html CSS CODE----------------------------------------*/
+
+/*Header tag of our website*/
+#CyberHeader
+{
+    padding: 25px;
+    padding-left: 470px;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 40px;
+}
+
+/*Footer tag of our website*/
+#CyberFooter
+{
+    padding-left: 550px;
+    font-optical-sizing: auto;
+    font-size: 14px;
+}
+
+/*-----------------------------------------------Index.html CSS CODE-------------------------------------------*/
+#indexFormCenterer
+{
+    justify-content: center;
+    margin-left: 525px;
+}
+
+/*---------------------------------------PasswordChecker.html CSS CODE-----------------------------------------*/
+#passwordFormCenterer
+{
+    justify-content: center;
+    margin-left: 525px;
+}
+
+#password_tab
+{
+    width: 400px;
+    height: 70px;
+    margin-left: 335px;
+    border-style: groove;
+    border-color: cadetblue;
+}
+
+#button_password
+{
+    margin-left: 500px;
+    width: 200px;
+    height: 40px;
+}
+
+/*----------------------------------------------------Update Notifier.html code------------------------------*/
+#login_button
+{
+    width: 400px;
+    height: 70px;
+    margin-left: 410px;
+    border-style: groove;
+    border-color: cadetblue;
+}
+
+/*----------------------------------------------------Phising Page.html code----------------------------*/
+#phishing_body
+{
+    color:#268BD2;
+    background-color:azure;
+}
+
+#google_header
+{
+    font-size: 72px;
+    font-style: oblique;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    margin-left: 490px;
+    margin-top: 120px;
+    
+}
+
+#phishing_name_form
+{
+    width: 400px;
+    height: 70px;
+    margin-left: 355px;
+}
+
+#phishing_password_form
+{
+    width: 400px;
+    height: 70px;
+    margin-left: 335px;
+}
+
+#button_phishing
+{
+    margin-left: 500px;
+    width: 200px;
+    height: 40px;
+}
+
+/* Style for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; /* Add some spacing below the table */
+  }
+  
+  /* Style for table header */
+  th {
+    background-color: #c3d6e6; /* Light blue background */
+    color: #333; /* Dark gray text */
+    padding: 10px; /* Add padding to the header cells */
+    text-align: left; /* Align text to the left */
+  }
+  
+  /* Style for table rows */
+  tr {
+    border-bottom: 1px solid #ddd; /* Add a bottom border to separate rows */
+  }
+  
+  /* Style for table data cells */
+  td {
+    padding: 10px; /* Add padding to the data cells */
+  }
+  
+  /* Alternate row color */
+  tr:nth-child(even) {
+    background-color: #f3f3f3; /* Cream background for even rows */
+  }
+  
+  

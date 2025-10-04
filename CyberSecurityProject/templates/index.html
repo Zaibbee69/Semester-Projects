@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+Main
+
+{% endblock %}
+
+{% block main %}
+
+<!--Making the 4 buttons for the website-->
+
+<h1>Programs:</h1>
+
+<div id= "indexFormCenterer">
+
+<form  action="/" method="post">
+
+
+    <br><br>
+
+    <button type="submit" name="button_value" value="password" class="btn btn-primary">Password Authorizer</button>
+
+    <br><br>
+
+    <button type="submit" name="button_value" value="phishing" class="btn btn-success">Phishing Website</button>
+
+    <br><br>
+
+    <button type="submit" name="button_value" value="update" class="btn btn-success">Update Notifier</button>
+
+    <br><br>
+
+    <button type="submit" name="button_value" value="credits" class="btn btn-outline-danger">+------Credits------+</button>
+
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+
+</form>
+
+</div>
+
+{% endblock %}
